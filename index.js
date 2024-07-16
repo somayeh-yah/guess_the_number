@@ -1,8 +1,4 @@
 'use strict';
-//DOM står för "document object model"; strukterad represenation av vår html dokument
-//dom är en koppling mellan html document och javascript kod.
-
-
 let score = 20;
 let highScore = 0;
 let secretNumber = Math.trunc(Math.random() * 20) + 1;
@@ -14,13 +10,12 @@ const displayMessage = function(message){
 document.querySelector('.check').addEventListener('click', function () {
   const guess = Number(document.querySelector('.guess').value);
   if (!guess) {
-    //här kontrollerar vi om det inte finns någon gissnig så ska ett meddelande visas i webbläsaren
-    //when there is no input
+  
     displayMessage("👎No number!")
-    //when user gusses right
+    
   } else if (guess === secretNumber) {
    displayMessage("🎉Correct number!")
-    //här ändrar vi bakgrundsfärgen efter rätt gissning , vi manupilerar css stylen med javascript
+  
     document.querySelector('body').style.backgroundColor = '#60b347';
     document.querySelector('.number').style.width = '30rem';
     document.querySelector('.score').textContent = score;
@@ -31,7 +26,7 @@ document.querySelector('.check').addEventListener('click', function () {
       highScore = score;
       document.querySelector('.highscore').textContent = highScore;
     }
-    //when guess is wrong
+    
   } else if (guess !== secretNumber) {
     displayMessage(guess > secretNumber ? ' 📈To high' : ' 📉To low');
     score--;
@@ -42,7 +37,6 @@ document.querySelector('.check').addEventListener('click', function () {
   }
 });
 
-//här återställer vi om spelet
 
 document.querySelector('.again').addEventListener('click', function () {
   secretNumber = Math.trunc(Math.random() * 20) + 1;
