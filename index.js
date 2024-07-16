@@ -33,7 +33,7 @@ document.querySelector(".check").addEventListener("click", function () {
       highScore = score;
       document.querySelector(".highscore").textContent = highScore;
     }
-  }  else if (guess !== secretNumber || guess === 0) {
+  }  else if (guess !== secretNumber) {
     displayModal(guess > secretNumber ? " 📈To high" : " 📉To low");
     score--;
     document.querySelector(".score").textContent = score;
