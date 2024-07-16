@@ -1,5 +1,5 @@
 "use strict";
-let score = 20;
+let score =  document.querySelector(".score").textContent = 20;
 let highScore = 0;
 let secretNumber = Math.trunc(Math.random() * 20) + 1;
 const modal = document.querySelector(".modal");
@@ -33,22 +33,28 @@ document.querySelector(".check").addEventListener("click", function () {
       highScore = score;
       document.querySelector(".highscore").textContent = highScore;
     }
-  }  else if (guess !== secretNumber) {
-    displayModal(guess > secretNumber ? " 📈To high" : " 📉To low");
-    score--;
-    document.querySelector(".score").textContent = score;
-  } else {
-    displayModal("You lost the game 😧");
-    document.querySelector(".score").textContent = 0;
+  } else if (guess !== secretNumber) {
+    if (score > 1) {
+      displayModal(guess > secretNumber ? "📈 Too high" : "📉 Too low");
+      score--;
+      document.querySelector(".score").textContent = score;
+    } else {
+      displayModal("You lost the game 😧");
+      document.querySelector(".score").textContent = 0;
+    }
   }
 });
 
-document.querySelector(".again").addEventListener("click", function () {
+const resetGame = function() {
   secretNumber = Math.trunc(Math.random() * 20) + 1;
-  let score = 20;
+  document.querySelector(".highscore").textContent = 0;
   document.querySelector(".guess").value = " ";
   document.querySelector("body").style.backgroundColor = "#7a7777";
   document.querySelector(".number").textContent = "?";
   document.querySelector(".number").style.width = "15rem";
-  document.querySelector(".score").textContent = score;
-});
+  score = 20;
+};
+
+document.querySelector(".again").addEventListener("click", resetGame);
+  
+
