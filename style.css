@@ -14,11 +14,10 @@ html {
 body {
   font-family: 'Press Start 2P', sans-serif;
   color: #eee;
-  background-color: #222;
+  background-color: #7a7777;
   /* background-color: #60b347; */
 }
 
-/* LAYOUT */
 header {
   position: relative;
   height: 35vh;
@@ -31,6 +30,40 @@ main {
   display: flex;
   align-items: center;
   justify-content: space-around;
+}
+
+/* MODAL (background) */
+
+.hidden {
+  display: none;
+}
+
+.modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 70%;
+
+  background-color: white;
+  padding: 6rem;
+  border-radius: 5px;
+  box-shadow: 0 3rem 5rem rgba(0, 0, 0, 0.3);
+  z-index: 10;
+}
+
+.close-modal {
+  color: #aaa;
+  float: right;
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.close-modal:hover,
+.close-modal:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
 }
 
 .left {
@@ -112,6 +145,12 @@ h1 {
 .message {
   margin-bottom: 8rem;
   height: 3rem;
+  
+}
+
+.modal-message {
+  font-size: 3rem;
+  color: #682828;
 }
 
 .label-score {
